@@ -12,7 +12,7 @@ This is a easy way to use [**Octave**](https://www.gnu.org/software/octave/index
 
 ## Configuration
 
-In the root forlder you have a [docker-compose.yml](./docker-compose.yml) which defien a structure to build an execute the container, setting the host port 8888 for a forwarding in the 8888 container port, if you have another service running in this port just change the first 8888 for you port election [port configuration](https://docs.docker.com/engine/reference/commandline/port/).
+In the root directory you have a [docker-compose.yml](./docker-compose.yml) which defines a structure to build an execute the container, setting the host port 8888 for a forwarding in the 8888 container port, if you have another service running in this port just change the first 8888 for you port election [port configuration](https://docs.docker.com/engine/reference/commandline/port/).
 
 Also have a volume set in the folder [exchange](./exchange) as default, you can modify it to add others volumes or delete it. [docker volumes](https://docs.docker.com/storage/volumes/)
 
@@ -27,7 +27,7 @@ notebook:
 
        command: jupyter notebook --port=8888 --no-browser --ip=0.0.0.0 --allow-root
        volumes:
-         - ./exchange:/exhange
+         - ./exchange:/exchange
       ports:
          - 8888:8888
 ```
