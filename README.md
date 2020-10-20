@@ -3,7 +3,7 @@
 > by:  [n0b0dy-su](https://github.com/n0b0dy-su)
 >
 
-This is a easy way to use [**Octave**](https://www.gnu.org/software/octave/index) on [**jupyter notebook**](https://jupyter.org/install) over a docker [**ubuntu**](https://hub.docker.com/_/ubuntu/) based container, it use the octave kernel of [**Calysto**](https://github.com/Calysto/octave_kernel).
+This is a easy way to use [**Octave**](https://www.gnu.org/software/octave/index) on [**jupyter notebook**](https://jupyter.org/install) over a docker [**Debian**](https://hub.docker.com/_/debian) based container, it use the octave kernel of [**Calysto**](https://github.com/Calysto/octave_kernel).
 
 ## Prerequisites
 
@@ -34,26 +34,23 @@ notebook:
 
 The following steps are executed in the [dockerfile](./octave.Dockerfile)
 
-1. Specifies the Ubuntu image on the container
-
+1. Specifies the Debian image on the container
 2. Update the index files of ubuntu packages
-
 3. Install python version 3.x.x
-
 4. Install the python package manager for the 3.x.x version 
-
 5. Install jupyter notebook with pip
-
 6. Install the Calysto octave_kernel with pip
+7. Install octave
 
 ```dockerfile
-FROM ubuntu
+FROM debian
 
 RUN apt-get update
 RUN apt-get install -y python3
 RUN apt-get install -y python3-pip
 RUN pip3 install notebook
 RUN pip3 install octave_kernel
+RUN apt-get install -y octave
 ```
 
 ## Usage
@@ -64,38 +61,12 @@ To execute the container just run
 
 This command maybe need root or admin permissions depends of your docker configuration.
 
-If is the first time, you should wait for the build and need a extra step once the it finishes, if the build ends successfully you should see a link something like this
+If is the first time, you should wait for the build , if it ends successfully you should see a link something like this
 
+> ```http
 > http://127.0.0.1:8888/?token=<token>
-
-#### Extra step only for the first time
-
->  - With the container running execute in your console/terminal
->
-> ```bash
->   docker container exec -it <container_name> bash
 > ```
->
->  - Once in the container bash terminal run
->
->  ```bash
->  apt install octave -y
->  ```
->
->  This step is not in the dockerfile beacuse the installation requires that you set a time zone, language and keyboard layout.
->
->  - When the octave installation finished just run ins the terminal the command
->
->  ```bash  
->  exit
->  ```
->
->  - It is recomended restar the container with <kbd>Ctrl</kbd>+<kbd>c</kbd> and run again
->
->   ```bash
->   docker-compose up
->   ```
->
+
 
 To use the jupyter notebook, open the link in your browser and it's all.
 
