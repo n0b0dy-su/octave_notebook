@@ -1,7 +1,9 @@
 # Octave Notebook
 
-> by:  [n0b0dy-su](https://github.com/n0b0dy-su)
->
+> By: n0b0dy
+> [github](https://github.com/n0b0dy-su)
+> [docker hub](https://hub.docker.com/u/n0b0dysu)
+> [docker image](https://hub.docker.com/r/n0b0dysu/octave_notebook)
 
 This is a easy way to use [**Octave**](https://www.gnu.org/software/octave/index) on [**jupyter notebook**](https://jupyter.org/install) over a docker [**Debian**](https://hub.docker.com/_/debian) based container, it use the octave kernel of [**Calysto**](https://github.com/Calysto/octave_kernel).
 
